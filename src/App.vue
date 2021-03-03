@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import { Octokit } from 'https://cdn.skypack.dev/@octokit/rest'
+import { ref } from 'vue'
+import { Octokit } from '@octokit/rest'
 
-console.log(new Octokit())
+const repos = ref({})
+const octokit = new Octokit()
+
+octokit.repos
+  .listForOrg({
+    org: 'vitejs'
+  })
+  .then(({ data }) => {
+    repos.value = data
+  })
+
 </script>
 
 <template>
   <div>
-    Hello World
+    <div v-for="repo in repos">
+      {{repo.name}}
+    </div>
   </div>
 </template>
