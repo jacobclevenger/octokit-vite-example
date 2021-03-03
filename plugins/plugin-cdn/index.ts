@@ -2,12 +2,9 @@
  * Source Code from https://github.com/vitejs/vite/tree/plugin-cdn/packages/plugin-cdn
  */
 
-// @ts-check
 import fetch from 'node-fetch'
 import { init, parse } from 'es-module-lexer'
 import MagicString from 'magic-string'
-// const { init, parse } = require('es-module-lexer')
-// const MagicString = require('magic-string').default
 
 const providers = {
   skypack: ['https://cdn.skypack.dev/'],
